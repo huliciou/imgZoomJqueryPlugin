@@ -1,0 +1,111 @@
+.image-zoom-modal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+    display: none;
+}
+.image-zoom-modal .zoom-modal-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    text-align: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.image-zoom-modal .zoom-modal-img .image-wrapper {
+    vertical-align: middle;
+}
+.image-zoom-modal .zoom-modal-img .image-wrapper img {
+    vertical-align: middle;
+    transition: transform 0.2s;
+    max-height: 80%;
+    max-width: 80%;
+}
+.image-zoom-modal .zoom-modal-img .image-wrapper::before,
+.image-zoom-modal .zoom-modal-img .image-wrapper::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.image-zoom-modal::selection,
+.image-zoom-modal .zoom-modal-img .image-wrapper::selection {
+    background: none !important;
+}
+.image-zoom-modal .zoom-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 28px;
+    width: 32px;
+    height: 32px;
+    background-image: url(images/zoom_modal_icons.png);
+    background-position: 0px -64px;
+    opacity: 0.8;
+    cursor: pointer;
+    z-index: 120;
+}
+.image-zoom-modal .zoom-modal-control {
+    position: fixed;
+    left: calc(50% - 50px);
+    bottom: 2%;
+    width: 100px;
+    height: 32px;
+    border-radius: 4px;
+    z-index: 120;
+    margin: 0px auto;
+}
+.image-zoom-modal .zoom-modal-control > div {
+    display: inline-block;
+    width: 32px;
+    background-color: #333;
+    height: 32px;
+    cursor: pointer;
+}
+.image-zoom-modal .zoom-modal-control > div:hover {
+    background-color: #999999;
+    border: #333 1px solid;
+}
+.image-zoom-modal .zoom-modal-control .zoom-in {
+    height: 32px;
+    background-image: url(images/zoom_modal_icons.png);
+    background-position: 0px 0px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.image-zoom-modal .zoom-modal-control .zoom-out {
+    height: 32px;
+    background-image: url(images/zoom_modal_icons.png);
+    background-position: 0px -32px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.image-zoom-modal .zoom-modal-control .zoom-tips {
+    height: 32px;
+    background-image: url(images/zoom_modal_icons.png);
+    background-position: -32px -128px;
+    cursor: pointer;
+    opacity: 0.8;
+    border-top: 1px solid #fff;
+}
+.image-zoom-modal .zoom-modal-control .zoom-reset {
+    height: 32px;
+    background-image: url(images/best-ratio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.image-zoom-modal .zoom-modal-control .zoom-in:hover,
+.image-zoom-modal .zoom-modal-control .zoom-out:hover,
+.image-zoom-modal .zoom-modal-control .zoom-tips:hover,
+.image-zoom-modal .zoom-modal-control .zoom-best-ratio:hover {
+    opacity: 1.0;
+}

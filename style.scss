@@ -1,0 +1,153 @@
+$modalWidth:100%;
+$modalHeight:100%;
+$backgroundColor:rgba(0, 0, 0, 0.85);
+$top:0px;
+$left:0px;
+
+
+@mixin background-attr($bkimg,$bkpos_t,$bkpos_l){
+    background-image: url($bkimg);
+    background-position: $bkpos_t $bkpos_l;
+}
+@mixin align-center(){
+    text-align: center;
+    margin: 0px auto;
+}
+@mixin vertical-middle(){
+    vertical-align: middle;
+    &::before{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    };
+    &::after{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    };
+}
+@mixin overflow-hidden(){
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.image-zoom-modal {
+    width: $modalWidth;
+    height: $modalHeight;
+    background: $backgroundColor;
+    top: $top;
+    left: $left;
+    position: fixed;
+    z-index: 100;
+    @include align-center();
+    @include overflow-hidden();
+    display:none;
+    &::selection{
+        background: none !important;
+    };
+    .zoom-modal-img {
+        @extend .image-zoom-modal;
+        position: relative;
+        display: inline-block; 
+        .image-wrapper {
+            img{
+                vertical-align: middle;
+                transition: transform 0.2s;
+                max-height: 80%;
+                max-width: 80%;
+
+            }
+            &::selection{
+                background: none !important;
+            };
+            @include vertical-middle();
+        }
+    }
+    .zoom-modal-close {
+        position: absolute;
+        top: 10px;
+        right: 28px;
+        width: 32px;
+        height: 32px;
+        @include background-attr('images/zoom_modal_icons.png',0px,-64px);
+        opacity: 0.8;
+        cursor: pointer;
+        z-index: 120;
+    }
+    .zoom-modal-control {
+        position: fixed;
+        left: calc(50% - 160px);
+        bottom: 2%;
+        width: 320px;
+        height: 32px;
+        border-radius: 4px;
+        z-index: 120;
+        margin: 0px auto;
+        div {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            opacity: 0.8;
+            border:1px solid #333;
+        }
+        table {
+           opacity: 0.8;
+        }
+        .zoom-in {
+            @include background-attr('images/zoom_modal_icons.png',0px,0px);
+            &:hover{
+                background-color: #999999;
+                border: #333 1px solid;
+                opacity: 1.0;
+            }
+        }
+        .zoom-out {
+            @include background-attr('images/zoom_modal_icons.png',0px,-32px);
+            &:hover{
+                background-color: #999999;
+                border: #333 1px solid;
+                opacity: 1.0;
+            }
+        }
+        .zoom-reset {
+            @include background-attr('images/best-ratio.png',0px,0px);
+            background-repeat: no-repeat;
+            background-position: center;
+            &:hover{
+                background-color: #999999;
+                border: #333 1px solid;
+                opacity: 1.0;
+            }
+        }
+        .zoom-scale{
+            width:8px;
+            height:8px;
+            border:{
+                style:solid;
+                width:2px;
+                color:#ffffff;
+                radius:50%;
+            };
+        }
+        .active{
+            background-color: #ffffff;
+            border-width:3px;
+        }
+        .zoom-scale-dashed{
+            width:2px;
+            height:2px;
+            background-color: #ffffff;
+            border-radius:50%;
+            vertical-align: middle;
+        }
+       
+        
+
+        
+        
+    }
+
+}

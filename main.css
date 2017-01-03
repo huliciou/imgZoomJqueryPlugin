@@ -1,0 +1,107 @@
+.image-zoom-modal, .image-zoom-modal .zoom-modal-img {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  z-index: 100;
+  text-align: center;
+  margin: 0px auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: none; }
+  .image-zoom-modal::selection, .image-zoom-modal .zoom-modal-img::selection {
+    background: none !important; }
+  .image-zoom-modal .zoom-modal-img {
+    position: relative;
+    display: inline-block; }
+    .image-zoom-modal .zoom-modal-img .image-wrapper {
+      vertical-align: middle; }
+      .image-zoom-modal .zoom-modal-img .image-wrapper img {
+        vertical-align: middle;
+        transition: transform 0.2s;
+        max-height: 80%;
+        max-width: 80%; }
+      .image-zoom-modal .zoom-modal-img .image-wrapper::selection {
+        background: none !important; }
+      .image-zoom-modal .zoom-modal-img .image-wrapper::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle; }
+      .image-zoom-modal .zoom-modal-img .image-wrapper::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle; }
+  .image-zoom-modal .zoom-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 28px;
+    width: 32px;
+    height: 32px;
+    background-image: url("images/zoom_modal_icons.png");
+    background-position: 0px -64px;
+    opacity: 0.8;
+    cursor: pointer;
+    z-index: 120; }
+  .image-zoom-modal .zoom-modal-control {
+    position: fixed;
+    left: calc(50% - 160px);
+    bottom: 2%;
+    width: 320px;
+    height: 32px;
+    border-radius: 4px;
+    z-index: 120;
+    margin: 0px auto; }
+    .image-zoom-modal .zoom-modal-control div {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      opacity: 0.8;
+      border: 1px solid #333; }
+    .image-zoom-modal .zoom-modal-control table {
+      opacity: 0.8; }
+    .image-zoom-modal .zoom-modal-control .zoom-in {
+      background-image: url("images/zoom_modal_icons.png");
+      background-position: 0px 0px; }
+      .image-zoom-modal .zoom-modal-control .zoom-in:hover {
+        background-color: #999999;
+        border: #333 1px solid;
+        opacity: 1.0; }
+    .image-zoom-modal .zoom-modal-control .zoom-out {
+      background-image: url("images/zoom_modal_icons.png");
+      background-position: 0px -32px; }
+      .image-zoom-modal .zoom-modal-control .zoom-out:hover {
+        background-color: #999999;
+        border: #333 1px solid;
+        opacity: 1.0; }
+    .image-zoom-modal .zoom-modal-control .zoom-reset {
+      background-image: url("images/best-ratio.png");
+      background-position: 0px 0px;
+      background-repeat: no-repeat;
+      background-position: center; }
+      .image-zoom-modal .zoom-modal-control .zoom-reset:hover {
+        background-color: #999999;
+        border: #333 1px solid;
+        opacity: 1.0; }
+    .image-zoom-modal .zoom-modal-control .zoom-scale {
+      width: 8px;
+      height: 8px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #ffffff;
+      border-radius: 50%; }
+    .image-zoom-modal .zoom-modal-control .active {
+      background-color: #ffffff;
+      border-width: 3px; }
+    .image-zoom-modal .zoom-modal-control .zoom-scale-dashed {
+      width: 2px;
+      height: 2px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      vertical-align: middle; }
+
+/*# sourceMappingURL=main.css.map */
