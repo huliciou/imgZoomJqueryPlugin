@@ -1,94 +1,32 @@
 (function($){
 
 	$.fn.zoomImg = function(options){
-		var settings = $.extend({},$.fn.zoomImg.defaults,options);
-
-		return this.each(function(){	
+	
+	//return this.each(function(){	
+		this.click(function(){
 			
-			if(methods[options]){
-				return methods[options].apply(this,Array.prototype.slice.call(arguments,1));
-			}else if(typeof methods[options] === 'Object' ||
-				 !methods[options]){
-				// init
-			}else{
-				$.error('Method'+options + 'does not exist !');
-			}
-				
-			doZoom($(this),settings);
-			
-		});
-	};
-	var zoomScale =1;
-	var mapZoomScale = 3;
-	var methods = {
-		zoomIn: function( ) {
-			if(zoomScale < 1.5){
-				zoomScale = zoomScale+0.2;
-				mapZoomScale++;
-			}
-			console.log("zoomIn:"+zoomScale);
-			$('.zoom-modal-img img').css('transform','scale('+zoomScale+')');
-			$('.zoom-scale').removeClass('active');
-			$('.zoom-scale-'+mapZoomScale).addClass('active');
-		},
-		zoomOut:function(){
-				if(zoomScale > 0.2){
-					zoomScale =zoomScale-0.2;
-					mapZoomScale--;
-				}
-				console.log("zoomOut:"+zoomScale);
-				$('.zoom-modal-img img').css('transform','scale('+zoomScale+')');
-				$('.zoom-scale').removeClass('active');
-				$('.zoom-scale-'+mapZoomScale).addClass('active');
-		},
-		zoomReset:function(){
-					$('.zoom-modal-img img').css("top","0px")
-											.css("left","0px")
-											.css("transform","none");
-						zoomScale = 1;
-						mapZoomScale = 3;
-					$('.zoom-scale').removeClass('active');
-					$('.zoom-scale-3').addClass('active');
-		},
-		closeModal:function(){
-					$('.image-zoom-modal').fadeOut();
-					zoomScale=1;
-				},
-		onWheelFunction:function(event){
-					var der = event.deltaY;
-					if(der>0){
-						this.zoomOut();
-					}else{
-						this.zoomIn();
-					}
-					//console.log(event.deltaY);
-		}
-	};
-	function doZoom($obj,settings){
-		$obj.css("cursor","zoom-in");
-		$obj.click(function(){
-			
-
-			var $img = $obj.clone()
+			var $this = $(this);
+			//var settings = $.extend($.fn.zoomImg.defaults,options);
+			var $img = $this.clone()
 							.removeAttr('id')
 							.removeAttr('width')
-							.removeAttr('height')
-							.css("border",settings.border);
-				
-			var $imgZoomModal = $('<div></div>')
-							.addClass('image-zoom-modal')
-							.addClass(settings.theme);
+							.removeAttr('height');
+			
+			var $imgZoomModal = $('<div></div>').addClass('image-zoom-modal');
 			var $zoomModalClose = $('<div></div>').addClass('zoom-modal-close');
 			var $zoomModalTool = $('<div></div>').addClass('zoom-modal-control');			
 			var $zoomInIcon = '<div class="zoom-in"></div>';
 			var $zoomOutIcon = '<div class="zoom-out"></div>';
 			var $zoomResetIcon = '<div class="zoom-reset"></div>';
+			//var $zoomScale = '<div class="zoom-scale"></div>';
 			var $zoomScaleDashed = '<div class="zoom-scale-dashed"></div>';
+
+
 
 			var $zoomToolTable = $('<table></table>').attr('align','center');
 			var $zoomToolTableTr = $('<tr></tr>');
 			$zoomToolTableTr.append('<td>'+$zoomOutIcon+'</td>');
-				
+			
 			var i =0;
 			do{
 				
@@ -110,8 +48,7 @@
 			$zoomToolTableTr.appendTo($zoomToolTable);
 
 
-			var $zoomModalImg = $('<div></div>')
-									.addClass('zoom-modal-img');
+			var $zoomModalImg = $('<div></div>').addClass('zoom-modal-img');
 			var $imageWrapper = $('<span></span>').addClass('image-wrapper');
 			
 			$zoomModalTool.append($zoomToolTable);
@@ -137,12 +74,69 @@
 			var onWheelFunction = methods['onWheelFunction'];
 			//document.getElementsByClassName("zoom-modal-img").addEventListener("wheel",onWheelFunction);
 		});
-	}
-	
-	
+		var zoomScale =1;
+		var mapZoomScale = 3;
+		var methods = {
+			initialize : function() { 
+			},
+			zoomIn: function( ) {
+				if(zoomScale < 1.5){
+					zoomScale = zoomScale+0.2;
+					mapZoomScale++;
+				}
+				console.log(zoomScale);
+				$('.zoom-modal-img img').css('transform','scale('+zoomScale+')');
+				$('.zoom-scale').removeClass('active');
+				$('.zoom-scale-'+mapZoomScale).addClass('active');
+			},
+			zoomOut:function(){
+				if(zoomScale > 0.2){
+					zoomScale =zoomScale-0.2;
+					mapZoomScale--;
+				}
+				console.log(zoomScale);
+				$('.zoom-modal-img img').css('transform','scale('+zoomScale+')');
+				$('.zoom-scale').removeClass('active');
+				$('.zoom-scale-'+mapZoomScale).addClass('active');
+			},
+			zoomReset:function(){
+				$('.zoom-modal-img img').css("top","0px")
+										.css("left","0px")
+										.css("transform","none");
+					zoomScale = 1;
+					mapZoomScale = 3;
+				$('.zoom-scale').removeClass('active');
+				$('.zoom-scale-3').addClass('active');
+			},
+			closeModal:function(){
+				$('.image-zoom-modal').fadeOut();
+				zoomScale=1;
+			},
+			onWheelFunction:function(event){
+				var der = event.deltaY;
+				if(der>0){
+					this.zoomOut();
+				}else{
+					this.zoomIn();
+				}
+				//console.log(event.deltaY);
+			}
+		};
+		if(methods[options]){
+			return methods[options].apply(this,Array.prototype.slice.call(arguments,1));
+		}else if(typeof methods[options] === 'Object' ||
+			 !methods[options]){
+			// init
+		}else{
+			$.error('Method'+options + 'does not exist !');
+		}
+		
+
+	//});
+		
+	};
 	//init CSS 設定
 	$.fn.zoomImg.defaults ={
-		theme:"dark",
-		title:""
+		width:"50%"
 	};
 }(jQuery));

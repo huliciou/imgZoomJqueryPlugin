@@ -1,6 +1,7 @@
 $modalWidth:100%;
 $modalHeight:100%;
-$backgroundColor:rgba(0, 0, 0, 0.85);
+$darkBgClr:rgba(0, 0, 0, 0.85);
+$lightBgClr:rgba(119, 119, 119, 0.7);
 $top:0px;
 $left:0px;
 
@@ -32,11 +33,28 @@ $left:0px;
     overflow-y: hidden;
     overflow-x: hidden;
 }
-
+.dark{
+    background: $darkBgClr;
+}
+.light{
+    background: $lightBgClr;
+    img{
+        border:10px solid #FFF;
+    }
+    .zoom-modal-close{
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background-color: #333;
+    }
+    .zoom-modal-control{
+        background-color: #333;
+    }
+   
+}
 .image-zoom-modal {
     width: $modalWidth;
     height: $modalHeight;
-    background: $backgroundColor;
+    /*background: $backgroundColor;*/
     top: $top;
     left: $left;
     position: fixed;
@@ -75,13 +93,16 @@ $left:0px;
         opacity: 0.8;
         cursor: pointer;
         z-index: 120;
+        &:hover{
+             opacity: 1.0;
+        };
     }
     .zoom-modal-control {
         position: fixed;
         left: calc(50% - 160px);
         bottom: 2%;
         width: 320px;
-        height: 32px;
+        height: 38px;
         border-radius: 4px;
         z-index: 120;
         margin: 0px auto;
@@ -91,7 +112,6 @@ $left:0px;
             height: 32px;
             cursor: pointer;
             opacity: 0.8;
-            border:1px solid #333;
         }
         table {
            opacity: 0.8;

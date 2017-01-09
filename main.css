@@ -1,7 +1,21 @@
+.dark {
+  background: rgba(0, 0, 0, 0.85); }
+
+.light {
+  background: rgba(119, 119, 119, 0.7); }
+  .light img {
+    border: 10px solid #FFF; }
+  .light .zoom-modal-close {
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background-color: #333; }
+  .light .zoom-modal-control {
+    background-color: #333; }
+
 .image-zoom-modal, .image-zoom-modal .zoom-modal-img {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  /*background: $backgroundColor;*/
   top: 0px;
   left: 0px;
   position: fixed;
@@ -46,12 +60,14 @@
     opacity: 0.8;
     cursor: pointer;
     z-index: 120; }
+    .image-zoom-modal .zoom-modal-close:hover {
+      opacity: 1.0; }
   .image-zoom-modal .zoom-modal-control {
     position: fixed;
     left: calc(50% - 160px);
     bottom: 2%;
     width: 320px;
-    height: 32px;
+    height: 38px;
     border-radius: 4px;
     z-index: 120;
     margin: 0px auto; }
@@ -60,8 +76,7 @@
       width: 32px;
       height: 32px;
       cursor: pointer;
-      opacity: 0.8;
-      border: 1px solid #333; }
+      opacity: 0.8; }
     .image-zoom-modal .zoom-modal-control table {
       opacity: 0.8; }
     .image-zoom-modal .zoom-modal-control .zoom-in {

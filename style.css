@@ -48,9 +48,9 @@
     z-index: 120; }
   .image-zoom-modal .zoom-modal-control {
     position: fixed;
-    left: calc(50% - 50px);
+    left: calc(50% - 160px);
     bottom: 2%;
-    width: 100px;
+    width: 320px;
     height: 32px;
     border-radius: 4px;
     z-index: 120;
@@ -59,23 +59,49 @@
       display: inline-block;
       width: 32px;
       height: 32px;
-      background-color: #333;
       cursor: pointer;
+      opacity: 0.8;
+      border: 1px solid #333; }
+    .image-zoom-modal .zoom-modal-control table {
       opacity: 0.8; }
-      .image-zoom-modal .zoom-modal-control div:hover {
-        background-color: #999999;
-        border: #333 1px solid;
-        opacity: 1.0; }
     .image-zoom-modal .zoom-modal-control .zoom-in {
       background-image: url("images/zoom_modal_icons.png");
       background-position: 0px 0px; }
+      .image-zoom-modal .zoom-modal-control .zoom-in:hover {
+        background-color: #999999;
+        border: #333 1px solid;
+        opacity: 1.0; }
     .image-zoom-modal .zoom-modal-control .zoom-out {
       background-image: url("images/zoom_modal_icons.png");
       background-position: 0px -32px; }
+      .image-zoom-modal .zoom-modal-control .zoom-out:hover {
+        background-color: #999999;
+        border: #333 1px solid;
+        opacity: 1.0; }
     .image-zoom-modal .zoom-modal-control .zoom-reset {
       background-image: url("images/best-ratio.png");
       background-position: 0px 0px;
       background-repeat: no-repeat;
       background-position: center; }
+      .image-zoom-modal .zoom-modal-control .zoom-reset:hover {
+        background-color: #999999;
+        border: #333 1px solid;
+        opacity: 1.0; }
+    .image-zoom-modal .zoom-modal-control .zoom-scale {
+      width: 8px;
+      height: 8px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #ffffff;
+      border-radius: 50%; }
+    .image-zoom-modal .zoom-modal-control .active {
+      background-color: #ffffff;
+      border-width: 3px; }
+    .image-zoom-modal .zoom-modal-control .zoom-scale-dashed {
+      width: 2px;
+      height: 2px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      vertical-align: middle; }
 
 /*# sourceMappingURL=style.css.map */

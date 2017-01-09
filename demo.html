@@ -10,15 +10,40 @@
     <script type="text/javascript" src="index.js"></script>
     <script>
     $(function() {
-        //$('.demo').zoomImg({width:"200px"});
+        
         $('#demo').zoomImg();
+        $('#demo2').zoomImg({theme:"light"});
+        //$('#demo').zoomImg({radius:"10px"});
+        //$('#demo').zoomImg('zoomIn');
     });
     </script>
-</head>
+    <style>
+        pre{
+            padding: 10px;
+            background: #f7f7f7;
+            border-radius: 5px;
+        }
+        
+
+    </style>
+
+    </head>
 
 <body>
     <div id="stage">
-		<img id="demo" width="120px" src="demo.jpg" style="cursor: zoom-in;">
+		<div>
+            <img id="demo" width="120px" src="demo.jpg" title="demo1"> default theme
+             <pre>
+               $('#demo').zoomImg();
+            </pre>
+        </div>
+        <div>
+            <img id="demo2" width="120px" src="demo2.jpg" title="demo2" > light theme
+            <pre>
+                $('#demo2').zoomImg({theme:"light"});
+            </pre>
+        </div>
+        
 	</div>
   
 </body>
