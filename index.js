@@ -51,17 +51,19 @@
 					$('.zoom-scale-3').addClass('active');
 		},
 		closeModal:function(){
-					$('.image-zoom-modal').fadeOut();
+					$('.image-zoom-modal').fadeOut("slow",function(){
+						$(this).remove();
+					});
 					zoomScale=1;
 				},
 		onWheelFunction:function(event){
-					var der = event.deltaY;
-					if(der>0){
-						this.zoomOut();
-					}else{
-						this.zoomIn();
-					}
-					//console.log(event.deltaY);
+			var der = event.deltaY;
+			/*if(der>0){
+				this.zoomOut();
+			}else{
+				this.zoomIn();
+			}*/
+			console.log(event.deltaY);
 		}
 	};
 	function doZoom($obj,settings){
@@ -73,7 +75,8 @@
 							.removeAttr('id')
 							.removeAttr('width')
 							.removeAttr('height')
-							.css("border",settings.border);
+							.draggable();
+							
 				
 			var $imgZoomModal = $('<div></div>')
 							.addClass('image-zoom-modal')
@@ -134,8 +137,7 @@
 			});
 
 			$('.zoom-scale-3').addClass('active');
-			var onWheelFunction = methods['onWheelFunction'];
-			//document.getElementsByClassName("zoom-modal-img").addEventListener("wheel",onWheelFunction);
+			
 		});
 	}
 	
